@@ -1,8 +1,11 @@
 package br.com.fiap.gastro_link_api_clean_architecture.infra.database.mapper;
 
-
 import br.com.fiap.gastro_link_api_clean_architecture.core.domain.ItemCardapio;
+import br.com.fiap.gastro_link_api_clean_architecture.core.dto.CadastrarItemCardapioInput;
+import br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarItemCardapioInput;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.database.jpa.entity.ItemCardapioJpaEntity;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.CriarItemCardapioRequest;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.ItemCardapioResponse;
 
 public class ItemCardapioMapper {
 
@@ -34,5 +37,41 @@ public class ItemCardapioMapper {
                 RestauranteMapper.toDomain(jpaEntity.getRestaurante())
         );
     }
-}
 
+    public static CadastrarItemCardapioInput toCadastrarItemCardapioInput(CriarItemCardapioRequest request) {
+        if (request == null) return null;
+        return new CadastrarItemCardapioInput(
+                request.nome(),
+                request.descricao(),
+                request.preco(),
+                request.disponibilidadeApenasRestaurante(),
+                request.caminhoFoto(),
+                request.restauranteId()
+        );
+    }
+
+    public static AtualizarItemCardapioInput toAtualizarItemCardapioInput(Long id, CriarItemCardapioRequest request) {
+        if (request == null) return null;
+        return new AtualizarItemCardapioInput(
+                id,
+                request.nome(),
+                request.descricao(),
+                request.preco(),
+                request.disponibilidadeApenasRestaurante(),
+                request.caminhoFoto()
+        );
+    }
+
+    public static ItemCardapioResponse toItemCardapioResponse(ItemCardapio item) {
+        if (item == null) return null;
+        return new ItemCardapioResponse(
+                item.getId(),
+                item.getNome(),
+                item.getDescricao(),
+                item.getPreco(),
+                item.getDisponibilidadeApenasRestaurante(),
+                item.getCaminhoFoto(),
+                item.getRestaurante().getId()
+        );
+    }
+}

@@ -24,7 +24,7 @@ class DeletarItemCardapioUseCaseTest {
     void testDeletarItemCardapioComSucesso() {
         Long itemCardapioId = 1L;
 
-        DeletarItemCardapioUseCase.create(this.itemCardapioGateway).processar(itemCardapioId);
+        DeletarItemCardapioUseCase.criar(this.itemCardapioGateway).processar(itemCardapioId);
 
         verify(this.itemCardapioGateway, times(1)).deletarItemCardapio(anyLong());
     }

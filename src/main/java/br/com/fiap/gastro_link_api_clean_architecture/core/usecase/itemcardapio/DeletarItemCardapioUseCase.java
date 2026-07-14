@@ -10,7 +10,7 @@ public class DeletarItemCardapioUseCase {
         this.itemCardapioGateway = itemCardapioGateway;
     }
 
-    public static DeletarItemCardapioUseCase create(IItemCardapioGateway itemCardapioGateway) {
+    public static DeletarItemCardapioUseCase criar(IItemCardapioGateway itemCardapioGateway) {
         return new DeletarItemCardapioUseCase(itemCardapioGateway);
     }
 
