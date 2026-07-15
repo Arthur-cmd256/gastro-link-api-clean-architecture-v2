@@ -5,6 +5,7 @@ import br.com.fiap.gastro_link_api_clean_architecture.core.domain.Usuario;
 import br.com.fiap.gastro_link_api_clean_architecture.core.dto.AssociarUsuarioAoTipoUsuarioInput;
 import br.com.fiap.gastro_link_api_clean_architecture.core.exception.TipoUsuarioNaoEncontradoException;
 import br.com.fiap.gastro_link_api_clean_architecture.core.exception.UsuarioNaoEncontradoException;
+import br.com.fiap.gastro_link_api_clean_architecture.core.factory.UsuarioFactory;
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.ITipoUsuarioGateway;
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.IUsuarioGateway;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,12 +33,7 @@ class AssociarUsuarioAoTipoUsuarioUseCaseTest {
 
     @Test
     void testAssociarUsuarioAoTipoUsuarioComSucesso() {
-        Usuario usuarioCadastrado = Usuario.criar(
-                associarUsuarioAoTipoUsuarioInput.idUsuario(),
-                "João",
-                "joão@example.com",
-                null
-        );
+        Usuario usuarioCadastrado = UsuarioFactory.criarDonoPadrao();
         TipoUsuario tipoUsuarioCadastrado = TipoUsuario.criar(
                 associarUsuarioAoTipoUsuarioInput.idTipoUsuario(),
                 "Dono de Restaurante"
@@ -72,12 +68,7 @@ class AssociarUsuarioAoTipoUsuarioUseCaseTest {
 
     @Test
     void testAssociarUsuarioAoTipoUsuarioComErroTipoUsuarioNaoEncontrado() {
-        Usuario usuarioCadastrado = Usuario.criar(
-                this.associarUsuarioAoTipoUsuarioInput.idUsuario(),
-                "João",
-                "joão@example.com",
-                null
-        );
+        Usuario usuarioCadastrado = UsuarioFactory.criarDonoPadrao();
         when(this.usuarioGateway.buscarUsuarioPorId(anyLong())).thenReturn(Optional.of(usuarioCadastrado));
         when(this.tipoUsuarioGateway.buscarTipoUsuarioPorId(anyLong())).thenReturn(Optional.empty());
 

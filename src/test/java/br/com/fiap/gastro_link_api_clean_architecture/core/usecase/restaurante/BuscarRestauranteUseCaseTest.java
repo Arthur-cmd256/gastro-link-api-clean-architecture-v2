@@ -1,6 +1,8 @@
 package br.com.fiap.gastro_link_api_clean_architecture.core.usecase.restaurante;
 
 import br.com.fiap.gastro_link_api_clean_architecture.core.domain.*;
+import br.com.fiap.gastro_link_api_clean_architecture.core.factory.EnderecoFactory;
+import br.com.fiap.gastro_link_api_clean_architecture.core.factory.UsuarioFactory;
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.IRestauranteGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,48 +18,13 @@ import static org.mockito.Mockito.*;
 class BuscarRestauranteUseCaseTest {
     IRestauranteGateway restauranteGateway;
     Endereco enderecoResturante;
-    TipoUsuario tipoUsuario;
     Usuario donoRestaurante;
 
     @BeforeEach
     void setUp() {
         this.restauranteGateway = mock(IRestauranteGateway.class);
-        this.enderecoResturante = enderecoSetUp(
-                "Avenida Paulista",
-                "1000",
-                "Torre A",
-                "Boa vista",
-                "São Paulo",
-                "SP",
-                "04184-000"
-        );
-        this.tipoUsuario = tipoUsuarioSetUp(1L, "Dono");
-        this.donoRestaurante = usuarioSetUp(1L, "João da Silva", "joao@example.com", this.tipoUsuario);
-    }
-
-    Endereco enderecoSetUp(String logradouro, String numero, String complemento, String bairro, String cidade, String uf, String cep) {
-        return Endereco.criar(
-                logradouro,
-                numero,
-                complemento,
-                bairro,
-                cidade,
-                uf,
-                cep
-        );
-    }
-
-    Usuario usuarioSetUp(Long idUsuario, String nomeUsuario, String enderecoEmailUsuario, TipoUsuario tipoUsuario) {
-        return Usuario.criar(
-                idUsuario,
-                nomeUsuario,
-                enderecoEmailUsuario,
-                tipoUsuario
-        );
-    }
-
-    TipoUsuario tipoUsuarioSetUp(Long idTipoUsuario, String nomeTipoUsuario) {
-        return TipoUsuario.criar(idTipoUsuario, nomeTipoUsuario);
+        this.enderecoResturante = EnderecoFactory.criarEnderecoPadrao();
+        this.donoRestaurante = UsuarioFactory.criarDonoPadrao();
     }
 
     @DisplayName("Buscar restaurante com sucesso")

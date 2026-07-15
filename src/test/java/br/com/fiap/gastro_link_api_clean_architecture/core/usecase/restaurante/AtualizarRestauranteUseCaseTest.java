@@ -4,6 +4,8 @@ import br.com.fiap.gastro_link_api_clean_architecture.core.domain.*;
 import br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarRestauranteInput;
 import br.com.fiap.gastro_link_api_clean_architecture.core.exception.RestauranteNaoEncontradoException;
 import br.com.fiap.gastro_link_api_clean_architecture.core.exception.UsuarioNaoEncontradoException;
+import br.com.fiap.gastro_link_api_clean_architecture.core.factory.EnderecoFactory;
+import br.com.fiap.gastro_link_api_clean_architecture.core.factory.UsuarioFactory;
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.IRestauranteGateway;
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.IUsuarioGateway;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,45 +24,14 @@ class AtualizarRestauranteUseCaseTest {
     IRestauranteGateway restauranteGateway;
     IUsuarioGateway usuarioGateway;
     Endereco enderecoResturante;
-    TipoUsuario tipoUsuario;
     Usuario donoRestaurante;
 
     @BeforeEach
     void setUp() {
         this.restauranteGateway = mock(IRestauranteGateway.class);
         this.usuarioGateway = mock(IUsuarioGateway.class);
-        this.enderecoResturante = enderecoSetUp(
-                "Avenida Paulista",
-                "1000",
-                "Torre A",
-                "Boa vista",
-                "São Paulo",
-                "SP",
-                "04184-000"
-        );
-        this.tipoUsuario = tipoUsuarioSetUp(1L, "Dono");
-        this.donoRestaurante = usuarioSetUp(1L, "João da Silva", "joao@example.com", this.tipoUsuario);
-    }
-
-    Endereco enderecoSetUp(String logradouro, String numero, String complemento, String bairro, String cidade, String uf, String cep) {
-        return Endereco.criar(
-                logradouro,
-                numero,
-                complemento,
-                bairro,
-                cidade,
-                uf,
-                cep
-        );
-    }
-
-    Usuario usuarioSetUp(Long idUsuario, String nomeUsuario, String enderecoEmailUsuario, TipoUsuario tipoUsuario) {
-        return Usuario.criar(
-                idUsuario,
-                nomeUsuario,
-                enderecoEmailUsuario,
-                tipoUsuario
-        );
+        this.enderecoResturante = EnderecoFactory.criarEnderecoPadrao();
+        this.donoRestaurante = UsuarioFactory.criarDonoPadrao();
     }
 
     TipoUsuario tipoUsuarioSetUp(Long idTipoUsuario, String nomeTipoUsuario) {
@@ -88,15 +59,7 @@ class AtualizarRestauranteUseCaseTest {
         TipoCozinha tipoCozinhaAtualizacao = TipoCozinha.criar(tipoCozinhaNomeAtualizacao);
         String nomeRestauranteAtualizacao = "Esfiha Imigrantes";
         String horarioFuncionamentoRestauranteAtualizacao = "Terça a Domingo, das 18hs as 02hs";
-        Endereco enderecoResturanteAtualizacao = enderecoSetUp(
-                "Avenida Paulista",
-                "1001",
-                "Torre B",
-                "Boa vista",
-                "São Paulo",
-                "SP",
-                "01310-100"
-        );
+        Endereco enderecoResturanteAtualizacao = EnderecoFactory.criarEnderecoPadrao();
         AtualizarRestauranteInput atualizarRestauranteInput = new AtualizarRestauranteInput(
                 idRestaurante,
                 nomeRestauranteAtualizacao,
@@ -137,12 +100,7 @@ class AtualizarRestauranteUseCaseTest {
         );
         when(this.restauranteGateway.buscarRestaurantePorId(any(Long.class))).thenReturn(Optional.of(restauranteCadastrado));
         Long idUsuarioAtualizacao = 2L;
-        Usuario donoRestauranteAtualizacao = usuarioSetUp(
-                idUsuarioAtualizacao,
-                "Arthur",
-                "arthur@example.com",
-                this.tipoUsuario
-        );
+        Usuario donoRestauranteAtualizacao = UsuarioFactory.criarDonoPadrao();
         when(this.usuarioGateway.buscarUsuarioPorId(any(Long.class))).thenReturn(Optional.ofNullable(donoRestauranteAtualizacao));
         String tipoCozinhaNomeAtualizacao = "Arabe";
         TipoCozinha tipoCozinhaAtualizacao = TipoCozinha.criar(tipoCozinhaNomeAtualizacao);

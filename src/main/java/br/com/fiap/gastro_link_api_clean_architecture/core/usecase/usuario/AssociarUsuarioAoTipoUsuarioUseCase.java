@@ -34,7 +34,8 @@ public class AssociarUsuarioAoTipoUsuarioUseCase {
                 usuarioBuscado.getId(),
                 usuarioBuscado.getNome(),
                 usuarioBuscado.getEnderecoDeEmail(),
-                tipoUsuarioBuscado
+                tipoUsuarioBuscado,
+                usuarioBuscado.getPossuiPermissaoDeDono()
         );
         return this.usuarioGateway.salvarUsuario(usuarioComTipo);
     }

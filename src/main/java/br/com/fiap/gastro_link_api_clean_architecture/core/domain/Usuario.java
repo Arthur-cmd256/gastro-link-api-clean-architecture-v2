@@ -8,20 +8,22 @@ public class Usuario {
     private final String nome;
     private final String enderecoDeEmail;
     private final TipoUsuario tipoUsuario;
+    private final Boolean possuiPermissaoDeDono;
 
-    private Usuario(Long id, String nome, String enderecoDeEmail, TipoUsuario tipoUsuario) {
+    private Usuario(Long id, String nome, String enderecoDeEmail, TipoUsuario tipoUsuario, Boolean possuiPermissaoDeDono) {
         this.id = id;
         this.nome = nome;
         this.enderecoDeEmail = enderecoDeEmail;
         this.tipoUsuario = tipoUsuario;
+        this.possuiPermissaoDeDono = possuiPermissaoDeDono;
     }
 
-    public static Usuario criar(String nome, String enderecoDeEmail, TipoUsuario tipoUsuario) {
-        return new Usuario(null, nome, enderecoDeEmail, tipoUsuario);
+    public static Usuario criar(String nome, String enderecoDeEmail, TipoUsuario tipoUsuario, Boolean possuiPermissaoDeDono) {
+        return new Usuario(null, nome, enderecoDeEmail, tipoUsuario, possuiPermissaoDeDono);
     }
 
-    public static Usuario criar(Long id, String nome, String enderecoDeEmail, TipoUsuario tipoUsuario) {
-        return new Usuario(id, nome, enderecoDeEmail, tipoUsuario);
+    public static Usuario criar(Long id, String nome, String enderecoDeEmail, TipoUsuario tipoUsuario, Boolean possuiPermissaoDeDono) {
+        return new Usuario(id, nome, enderecoDeEmail, tipoUsuario, possuiPermissaoDeDono);
     }
 
     public String getTipoUsuarioNome() {

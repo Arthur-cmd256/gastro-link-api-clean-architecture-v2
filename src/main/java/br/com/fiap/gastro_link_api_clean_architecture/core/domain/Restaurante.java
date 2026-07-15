@@ -3,6 +3,7 @@ package br.com.fiap.gastro_link_api_clean_architecture.core.domain;
 
 import br.com.fiap.gastro_link_api_clean_architecture.core.exception.DadoObrigatorioException;
 import br.com.fiap.gastro_link_api_clean_architecture.core.exception.RestauranteDeveTerDonoException;
+import br.com.fiap.gastro_link_api_clean_architecture.core.exception.UsuarioNaoPossuiPermissaoDeDonoException;
 import lombok.Getter;
 
 @Getter
@@ -20,6 +21,9 @@ public class Restaurante {
         }
         if (dono == null) {
             throw new RestauranteDeveTerDonoException();
+        }
+        if (!dono.getPossuiPermissaoDeDono()){
+            throw new UsuarioNaoPossuiPermissaoDeDonoException();
         }
 
         this.id = id;

@@ -25,7 +25,8 @@ public class UsuarioMapper {
                 jpaEntity.getId(),
                 jpaEntity.getNome(),
                 jpaEntity.getEnderecoDeEmail(),
-                TipoUsuarioMapper.toDomain(jpaEntity.getTipoUsuario())
+                TipoUsuarioMapper.toDomain(jpaEntity.getTipoUsuario()),
+                jpaEntity.getPossuiPermissaoDeDono()
         );
     }
 }

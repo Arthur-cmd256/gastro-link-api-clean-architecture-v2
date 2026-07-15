@@ -29,6 +29,9 @@ public class UsuarioJpaEntity {
     @OneToMany(mappedBy = "dono", fetch = FetchType.LAZY)
     private Set<RestauranteJpaEntity> restaurantes;
 
+    @Column(nullable = false)
+    private Boolean possuiPermissaoDeDono;
+
     public UsuarioJpaEntity() {
     }
 }
