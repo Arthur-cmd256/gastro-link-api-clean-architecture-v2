@@ -7,8 +7,8 @@ import br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarRestaura
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.IRestauranteGateway;
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.IUsuarioGateway;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.database.mapper.RestauranteMapper;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.CriarRestauranteRequest;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.CriarRestauranteResponse;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.RestauranteRequest;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.RestauranteResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,20 +26,20 @@ public class RestauranteApiController {
     }
 
     @PostMapping
-    public ResponseEntity<CriarRestauranteResponse> criarRestaurante(@RequestBody CriarRestauranteRequest request) {
+    public ResponseEntity<RestauranteResponse> criarRestaurante(@RequestBody RestauranteRequest request) {
         CadastrarRestauranteInput input = RestauranteMapper.toCadastrarRestauranteInput(request);
         Restaurante restaurante = RestauranteController.criar(this.restauranteGateway, this.usuarioGateway).cadastrar(input);
         return ResponseEntity.status(HttpStatus.CREATED).body(RestauranteMapper.toCriarRestauranteResponse(restaurante));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CriarRestauranteResponse> buscarRestaurante(@PathVariable Long id) {
+    public ResponseEntity<RestauranteResponse> buscarRestaurante(@PathVariable Long id) {
         Restaurante restaurante = RestauranteController.criar(this.restauranteGateway, this.usuarioGateway).buscar(id);
         return ResponseEntity.ok(RestauranteMapper.toCriarRestauranteResponse(restaurante));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CriarRestauranteResponse> atualizarRestaurante(@PathVariable Long id, @RequestBody CriarRestauranteRequest request) {
+    public ResponseEntity<RestauranteResponse> atualizarRestaurante(@PathVariable Long id, @RequestBody RestauranteRequest request) {
         AtualizarRestauranteInput input = RestauranteMapper.toAtualizarRestauranteInput(id, request);
         Restaurante restaurante = RestauranteController.criar(this.restauranteGateway, this.usuarioGateway).atualizar(input);
         return ResponseEntity.ok(RestauranteMapper.toCriarRestauranteResponse(restaurante));

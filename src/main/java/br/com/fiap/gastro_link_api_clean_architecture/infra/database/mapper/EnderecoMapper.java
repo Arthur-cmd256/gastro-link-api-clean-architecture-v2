@@ -19,7 +19,9 @@ public class EnderecoMapper {
     }
 
     public static Endereco toDomain(EnderecoJpaEntity jpaEntity) {
+        if (jpaEntity == null) return null;
         return Endereco.criar(
+            jpaEntity.getId(),
             jpaEntity.getLogradouro(),
             jpaEntity.getComplemento(),
             jpaEntity.getNumero(),

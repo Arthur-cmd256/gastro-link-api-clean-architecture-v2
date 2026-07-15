@@ -7,7 +7,7 @@ import br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarItemCard
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.IItemCardapioGateway;
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.IRestauranteGateway;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.database.mapper.ItemCardapioMapper;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.CriarItemCardapioRequest;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.ItemCardapioRequest;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.ItemCardapioResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +29,7 @@ public class ItemCardapioApiController {
     }
 
     @PostMapping
-    public ResponseEntity<ItemCardapioResponse> criarItemCardapio(@RequestBody CriarItemCardapioRequest request) {
+    public ResponseEntity<ItemCardapioResponse> criarItemCardapio(@RequestBody ItemCardapioRequest request) {
         CadastrarItemCardapioInput input = ItemCardapioMapper.toCadastrarItemCardapioInput(request);
         ItemCardapio item = ItemCardapioController.criar(this.itemCardapioGateway, this.restauranteGateway).cadastrar(input);
         return ResponseEntity.status(HttpStatus.CREATED).body(ItemCardapioMapper.toItemCardapioResponse(item));
@@ -43,7 +43,7 @@ public class ItemCardapioApiController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ItemCardapioResponse> atualizarItemCardapio(@PathVariable Long id, @RequestBody CriarItemCardapioRequest request) {
+    public ResponseEntity<ItemCardapioResponse> atualizarItemCardapio(@PathVariable Long id, @RequestBody ItemCardapioRequest request) {
         AtualizarItemCardapioInput input = ItemCardapioMapper.toAtualizarItemCardapioInput(id, request);
         ItemCardapio item = ItemCardapioController.criar(this.itemCardapioGateway, this.restauranteGateway).atualizar(input);
         return ResponseEntity.ok(ItemCardapioMapper.toItemCardapioResponse(item));

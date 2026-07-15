@@ -20,7 +20,7 @@ public class RestauranteJpaEntity {
     @Column(nullable = false)
     private String horarioFuncionamento;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco", nullable = false)
     private EnderecoJpaEntity enderecoCompleto;
 
@@ -28,7 +28,7 @@ public class RestauranteJpaEntity {
     @JoinColumn(name = "id_dono", nullable = false)
     private UsuarioJpaEntity dono;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "id_tipo_cozinha", nullable = false)
     private TipoCozinhaJpaEntity tipoCozinha;
 

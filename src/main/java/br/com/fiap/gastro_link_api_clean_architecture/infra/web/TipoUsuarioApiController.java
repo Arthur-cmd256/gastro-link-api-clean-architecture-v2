@@ -6,8 +6,8 @@ import br.com.fiap.gastro_link_api_clean_architecture.core.dto.CadastrarTipoUsua
 import br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarTipoUsuarioInputDTO;
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.ITipoUsuarioGateway;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.database.mapper.TipoUsuarioMapper;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.CriarTipoUsuarioRequest;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.CriarTipoUsuarioResponse;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.TipoUsuarioRequest;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.TipoUsuarioResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +30,7 @@ public class TipoUsuarioApiController {
     }
 
     @PostMapping
-    public ResponseEntity<CriarTipoUsuarioResponse> criarTipoUsuario(@RequestBody CriarTipoUsuarioRequest request) {
+    public ResponseEntity<TipoUsuarioResponse> criarTipoUsuario(@RequestBody TipoUsuarioRequest request) {
         CadastrarTipoUsuarioInputDTO inputDTO = TipoUsuarioMapper.toCadastrarTipoUsuarioInputDTO(request);
         CadastrarTipoUsuarioOutDTO outDTO = TipoUsuarioController
                 .criar(this.tipoUsuarioGateway)
@@ -39,7 +39,7 @@ public class TipoUsuarioApiController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CriarTipoUsuarioResponse> buscarTipoUsuario(@PathVariable Long id) {
+    public ResponseEntity<TipoUsuarioResponse> buscarTipoUsuario(@PathVariable Long id) {
         CadastrarTipoUsuarioOutDTO outDTO = TipoUsuarioController
                 .criar(this.tipoUsuarioGateway)
                 .buscar(id);
@@ -47,7 +47,7 @@ public class TipoUsuarioApiController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CriarTipoUsuarioResponse> atualizarTipoUsuario(@PathVariable Long id, @RequestBody CriarTipoUsuarioRequest request) {
+    public ResponseEntity<TipoUsuarioResponse> atualizarTipoUsuario(@PathVariable Long id, @RequestBody TipoUsuarioRequest request) {
         AtualizarTipoUsuarioInputDTO inputDTO = TipoUsuarioMapper.toAtualizarTipoUsuarioInputDTO(id, request);
         CadastrarTipoUsuarioOutDTO outDTO = TipoUsuarioController
                 .criar(this.tipoUsuarioGateway)

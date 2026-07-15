@@ -4,7 +4,7 @@ import br.com.fiap.gastro_link_api_clean_architecture.core.domain.ItemCardapio;
 import br.com.fiap.gastro_link_api_clean_architecture.core.dto.CadastrarItemCardapioInput;
 import br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarItemCardapioInput;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.database.jpa.entity.ItemCardapioJpaEntity;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.CriarItemCardapioRequest;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.ItemCardapioRequest;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.ItemCardapioResponse;
 
 public class ItemCardapioMapper {
@@ -38,7 +38,7 @@ public class ItemCardapioMapper {
         );
     }
 
-    public static CadastrarItemCardapioInput toCadastrarItemCardapioInput(CriarItemCardapioRequest request) {
+    public static CadastrarItemCardapioInput toCadastrarItemCardapioInput(ItemCardapioRequest request) {
         if (request == null) return null;
         return new CadastrarItemCardapioInput(
                 request.nome(),
@@ -50,7 +50,7 @@ public class ItemCardapioMapper {
         );
     }
 
-    public static AtualizarItemCardapioInput toAtualizarItemCardapioInput(Long id, CriarItemCardapioRequest request) {
+    public static AtualizarItemCardapioInput toAtualizarItemCardapioInput(Long id, ItemCardapioRequest request) {
         if (request == null) return null;
         return new AtualizarItemCardapioInput(
                 id,

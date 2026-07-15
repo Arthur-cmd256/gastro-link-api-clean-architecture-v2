@@ -6,9 +6,9 @@ import br.com.fiap.gastro_link_api_clean_architecture.core.domain.TipoCozinha;
 import br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarRestauranteInput;
 import br.com.fiap.gastro_link_api_clean_architecture.core.dto.CadastrarRestauranteInput;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.database.jpa.entity.RestauranteJpaEntity;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.CriarRestauranteRequest;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.RestauranteRequest;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.EnderecoRequest;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.CriarRestauranteResponse;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.RestauranteResponse;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.EnderecoResponse;
 
 public class RestauranteMapper {
@@ -40,7 +40,7 @@ public class RestauranteMapper {
         );
     }
 
-    public static CadastrarRestauranteInput toCadastrarRestauranteInput(CriarRestauranteRequest request) {
+    public static CadastrarRestauranteInput toCadastrarRestauranteInput(RestauranteRequest request) {
         if (request == null) return null;
         EnderecoRequest er = request.endereco();
         Endereco endereco = Endereco.criar(er.logradouro(), er.complemento(), er.numero(), er.bairro(), er.cidade(), er.uf(), er.cep());
@@ -54,7 +54,7 @@ public class RestauranteMapper {
         );
     }
 
-    public static AtualizarRestauranteInput toAtualizarRestauranteInput(Long id, CriarRestauranteRequest request) {
+    public static AtualizarRestauranteInput toAtualizarRestauranteInput(Long id, RestauranteRequest request) {
         if (request == null) return null;
         EnderecoRequest er = request.endereco();
         Endereco endereco = Endereco.criar(er.logradouro(), er.complemento(), er.numero(), er.bairro(), er.cidade(), er.uf(), er.cep());
@@ -69,7 +69,7 @@ public class RestauranteMapper {
         );
     }
 
-    public static CriarRestauranteResponse toCriarRestauranteResponse(Restaurante restaurante) {
+    public static RestauranteResponse toCriarRestauranteResponse(Restaurante restaurante) {
         if (restaurante == null) return null;
         var endereco = restaurante.getEndereco();
         EnderecoResponse enderecoResponse = new EnderecoResponse(
@@ -82,7 +82,7 @@ public class RestauranteMapper {
                 endereco.getUf(),
                 endereco.getCep()
         );
-        return new CriarRestauranteResponse(
+        return new RestauranteResponse(
                 restaurante.getId(),
                 restaurante.getNome(),
                 restaurante.getDono().getId(),

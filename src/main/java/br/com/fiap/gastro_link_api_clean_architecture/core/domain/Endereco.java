@@ -28,4 +28,8 @@ public class Endereco {
         return new Endereco(null, logradouro, complemento, numero, bairro, cidade, uf, cep);
     }
 
+    public static Endereco criar(Long id, String logradouro, String complemento, String numero, String bairro, String cidade, String uf, String cep){
+        return new Endereco(id, logradouro, complemento, numero, bairro, cidade, uf, cep);
+    }
+
 }

@@ -5,8 +5,8 @@ import br.com.fiap.gastro_link_api_clean_architecture.core.domain.TipoUsuario;
 import br.com.fiap.gastro_link_api_clean_architecture.core.dto.CadastrarTipoUsuarioInputDTO;
 import br.com.fiap.gastro_link_api_clean_architecture.core.dto.CadastrarTipoUsuarioOutDTO;
 import br.com.fiap.gastro_link_api_clean_architecture.infra.database.jpa.entity.TipoUsuarioJpaEntity;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.CriarTipoUsuarioRequest;
-import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.CriarTipoUsuarioResponse;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.request.TipoUsuarioRequest;
+import br.com.fiap.gastro_link_api_clean_architecture.infra.web.response.TipoUsuarioResponse;
 
 public class TipoUsuarioMapper {
 
@@ -26,29 +26,29 @@ public class TipoUsuarioMapper {
         return TipoUsuario.criar(jpaEntity.getId(), jpaEntity.getNome());
     }
 
-    public static CadastrarTipoUsuarioInputDTO toCadastrarTipoUsuarioInputDTO(CriarTipoUsuarioRequest criarTipoUsuarioRequest) {
-        if (criarTipoUsuarioRequest == null) return null;
+    public static CadastrarTipoUsuarioInputDTO toCadastrarTipoUsuarioInputDTO(TipoUsuarioRequest tipoUsuarioRequest) {
+        if (tipoUsuarioRequest == null) return null;
 
         return new CadastrarTipoUsuarioInputDTO(
-                criarTipoUsuarioRequest.nome()
+                tipoUsuarioRequest.nome()
         );
     }
 
-    public static CriarTipoUsuarioResponse toCriarTipoUsuarioResponse(CadastrarTipoUsuarioOutDTO outDTO) {
+    public static TipoUsuarioResponse toCriarTipoUsuarioResponse(CadastrarTipoUsuarioOutDTO outDTO) {
         if (outDTO == null) return null;
 
-        return new CriarTipoUsuarioResponse(
+        return new TipoUsuarioResponse(
                 outDTO.id(),
                 outDTO.nome()
         );
     }
 
-    public static br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarTipoUsuarioInputDTO toAtualizarTipoUsuarioInputDTO(Long id, CriarTipoUsuarioRequest criarTipoUsuarioRequest) {
-        if (criarTipoUsuarioRequest == null) return null;
+    public static br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarTipoUsuarioInputDTO toAtualizarTipoUsuarioInputDTO(Long id, TipoUsuarioRequest tipoUsuarioRequest) {
+        if (tipoUsuarioRequest == null) return null;
 
         return new br.com.fiap.gastro_link_api_clean_architecture.core.dto.AtualizarTipoUsuarioInputDTO(
                 id,
-                criarTipoUsuarioRequest.nome()
+                tipoUsuarioRequest.nome()
         );
     }
 }

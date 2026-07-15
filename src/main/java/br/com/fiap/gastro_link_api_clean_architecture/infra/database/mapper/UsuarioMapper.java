@@ -14,6 +14,7 @@ public class UsuarioMapper {
         jpaEntity.setNome(usuario.getNome());
         jpaEntity.setEnderecoDeEmail(usuario.getEnderecoDeEmail());
         jpaEntity.setTipoUsuario(TipoUsuarioMapper.toJpaEntity(usuario.getTipoUsuario()));
+        jpaEntity.setPossuiPermissaoDeDono(usuario.getPossuiPermissaoDeDono());
 
         return jpaEntity;
     }
