@@ -2,6 +2,8 @@ package br.com.fiap.gastro_link_api_clean_architecture.core.usecase.restaurante;
 
 
 import br.com.fiap.gastro_link_api_clean_architecture.core.domain.Restaurante;
+import br.com.fiap.gastro_link_api_clean_architecture.core.exception.RestauranteDeveTerDonoException;
+import br.com.fiap.gastro_link_api_clean_architecture.core.exception.RestauranteNaoEncontradoException;
 import br.com.fiap.gastro_link_api_clean_architecture.core.gateway.IRestauranteGateway;
 
 public class BuscarRestauranteUseCase {
@@ -19,6 +21,6 @@ public class BuscarRestauranteUseCase {
     public Restaurante processar(Long idRestaurante) {
         return this.restauranteGateway
                 .buscarRestaurantePorId(idRestaurante)
-                .orElseThrow(() -> new RuntimeException("Restaurante não encontrado com o ID: " + idRestaurante));
+                .orElseThrow(() -> new RestauranteNaoEncontradoException(idRestaurante));
     }
 }

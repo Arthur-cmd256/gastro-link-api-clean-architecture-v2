@@ -1,0 +1,336 @@
+{
+  "info": {
+    "_postman_id": "9537aaf5-aae3-467b-a1f8-b2bf3a46f805",
+    "name": "gastro-link-api-clean-architecture",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50794245",
+    "_collection_link": "https://go.postman.co/collection/50794245-9537aaf5-aae3-467b-a1f8-b2bf3a46f805?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "tipo-usuario",
+      "item": [
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nome\": \"Teste tipo usuario\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/v1/tipos-usuario",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "tipos-usuario"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/v1/tipos-usuario/4",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "tipos-usuario",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Teste tipo usuario v2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/v1/tipos-usuario/4",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "tipos-usuario",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/v1/tipos-usuario/4",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "tipos-usuario",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "restaurante",
+      "item": [
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Nome do Restaurante\",\n  \"donoId\": 1,\n  \"endereco\": {\n    \"logradouro\": \"Rua Exemplo\",\n    \"complemento\": \"Bloco A\",\n    \"numero\": \"100\",\n    \"bairro\": \"Centro\",\n    \"cidade\": \"São Paulo\",\n    \"uf\": \"SP\",\n    \"cep\": \"01000-000\"\n  },\n  \"tipoCozinha\": \"Italiana\",\n  \"horarioFuncionamento\": \"18:00 - 23:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/v1/restaurantes",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "restaurantes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/v1/restaurantes/1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "restaurantes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nome\": \"Nome do Restaurante 2\",\r\n  \"donoId\": 1,\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Exemplo\",\r\n    \"complemento\": \"Bloco V\",\r\n    \"numero\": \"100\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"uf\": \"SP\",\r\n    \"cep\": \"01000-000\"\r\n  },\r\n  \"tipoCozinha\": \"Francesa\",\r\n  \"horarioFuncionamento\": \"18:00 - 02:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/v1/restaurantes/1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "restaurantes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/v1/restaurantes/1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "restaurantes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "item-cardapio",
+      "item": [
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Pizza Margherita\",\n  \"descricao\": \"Molho de tomate artesanal, muçarela de búfala e manjericão fresco.\",\n  \"preco\": 55.90,\n  \"disponibilidadeApenasRestaurante\": false,\n  \"caminhoFoto\": \"/images/cardapio/pizza-margherita.jpg\",\n  \"restauranteId\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/v1/itens-cardapio",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "itens-cardapio"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar por restaurante",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/v1/itens-cardapio/restaurante/2",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "itens-cardapio",
+                "restaurante",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n  \"nome\": \"Pizza Margherita v2\",\r\n  \"descricao\": \"Molho de tomate artesanal, muçarela de búfala e manjericão fresco.\",\r\n  \"preco\": 75.90,\r\n  \"disponibilidadeApenasRestaurante\": true,\r\n  \"caminhoFoto\": \"/images/cardapio/pizza-margherita.jpg\",\r\n  \"restauranteId\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/v1/itens-cardapio/1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "itens-cardapio",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/v1/itens-cardapio/1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v1",
+                "itens-cardapio",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": ""
+    }
+  ]
+}

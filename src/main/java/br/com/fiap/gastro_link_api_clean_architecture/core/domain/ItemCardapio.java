@@ -16,25 +16,6 @@ public class ItemCardapio {
     private final Restaurante restaurante;
 
     private ItemCardapio(Long id, String nome, String descricao, BigDecimal preco, Boolean disponibilidadeApenasRestaurante, String caminhoFoto, Restaurante restaurante) {
-        if (nome == null) {
-            throw new DadoObrigatorioException("nome");
-        }
-        if (descricao == null) {
-            throw new DadoObrigatorioException("descricao");
-        }
-        if (preco == null) {
-            throw new DadoObrigatorioException("preco");
-        }
-        if (disponibilidadeApenasRestaurante == null) {
-            throw new DadoObrigatorioException("disponibilidade");
-        }
-        if (caminhoFoto == null) {
-            throw new DadoObrigatorioException("caminho");
-        }
-        if (restaurante == null) {
-            throw new DadoObrigatorioException("restaurante");
-        }
-
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
